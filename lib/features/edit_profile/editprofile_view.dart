@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coody/core/utils/colors.dart';
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/appbar_custome.dart';
+
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/button_widget.dart';
 import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/core/widgets/textinput_widget.dart';
@@ -49,6 +50,13 @@ class _EditProfileViewState extends State<EditProfileView> {
       }
     }, builder: (context, state) {
       return Scaffold(
+        appBar: appBars(
+            context: context,
+            isback: true,
+            titte: Text(
+              'Edite Profile',
+              style: getappbartextStyle(),
+            )),
         body: SafeArea(
             child: StreamBuilder(
                 stream: FirebaseFirestore.instance
@@ -78,14 +86,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                         physics: const ClampingScrollPhysics(),
                         child: Column(
                           children: [
-                            AppBarCustome(
-                              isback: true,
-                              titte: Center(
-                                  child: Text(
-                                'Edite Profile',
-                                style: getappbartextStyle(),
-                              )),
-                            ),
+                      
                             const Gap(20),
                             Stack(
                               alignment: Alignment.bottomRight,

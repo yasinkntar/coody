@@ -1,6 +1,7 @@
 import 'package:coody/core/functions/routing.dart';
 import 'package:coody/core/utils/colors.dart';
 import 'package:coody/core/utils/style.dart';
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/button_widget.dart';
 import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/core/widgets/textinput_widget.dart';
@@ -44,6 +45,7 @@ class _SignupViewState extends State<SignupView> {
     }, builder: (context, state) {
       return Scaffold(
         backgroundColor: AppColors.scaffoldBGdark,
+        appBar: appBars(context: context,isback: true),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Form(
@@ -63,37 +65,7 @@ class _SignupViewState extends State<SignupView> {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 24),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 45,
-                                    height: 45,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Color(0xfffcfcfe),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0xff898a8d),
-                                          offset: Offset(0, 1),
-                                          blurRadius: 0,
-                                        ),
-                                      ],
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: SizedBox(
-                                        child: Image.asset('assets/back.png'),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
+                
                             Text('Sign Up',
                                 style: getbodyStyle(
                                     fontSize: 30,

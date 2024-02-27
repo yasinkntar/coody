@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coody/core/functions/routing.dart';
 import 'package:coody/core/models/payment_model.dart';
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/appbar_custome.dart';
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/button_widget.dart';
 import 'package:coody/features/payment/add_payment.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,6 +38,13 @@ class _PaymentViewState extends State<PaymentView> {
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
       return Scaffold(
+        appBar: appBars(
+            context: context,
+            isback: true,
+            titte: Text(
+              'Payment Method',
+              style: getappbartextStyle(),
+            )),
         bottomNavigationBar: Container(
           padding: const EdgeInsets.all(20),
           child: Buton(
@@ -49,7 +56,8 @@ class _PaymentViewState extends State<PaymentView> {
         ),
         body: StreamBuilder(
             stream: FirebaseFirestore.instance
-                .collection('Payment').where('uuid' ,isEqualTo: user?.uid)
+                .collection('Payment')
+                .where('uuid', isEqualTo: user?.uid)
                 .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
@@ -87,14 +95,6 @@ class _PaymentViewState extends State<PaymentView> {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    AppBarCustome(
-                      isback: true,
-                      titte: Center(
-                          child: Text(
-                        'Payment Method',
-                        style: getappbartextStyle(),
-                      )),
-                    ),
                     const Gap(25),
                     Expanded(
                       child: AnimatedListView(

@@ -1,7 +1,6 @@
 import 'package:coody/core/models/users_addrees.dart';
-import 'package:coody/core/utils/size_config.dart';
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/appbar_custome.dart';
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/button_widget.dart';
 import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/core/widgets/textinput_widget.dart';
@@ -44,22 +43,14 @@ class _AddAddresscViewState extends State<AddAddresscView> {
       return Form(
         key: formKey,
         child: Scaffold(
+          appBar: appBars(
+            context: context,
+            isback: true,
+          ),
           body: SafeArea(
               child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  width: SizeConfig.screenWidth,
-                  height: SizeConfig.screenHeight * 0.4,
-                  padding: const EdgeInsets.all(20),
-                  color: const Color(0xffD0D9E1),
-                  child: Align(
-                      alignment: Alignment.topCenter,
-                      child: AppBarCustome(
-                        isback: true,
-                      )),
-                ),
-                const Gap(15),
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(

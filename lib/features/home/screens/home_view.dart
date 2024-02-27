@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coody/core/functions/routing.dart';
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/appbar_custome.dart';
-import 'package:coody/core/widgets/button_widget.dart';
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/textinput_widget.dart';
 import 'package:coody/features/cart/cart_screen.dart';
 import 'package:coody/features/home/screens/widget/complete/category_com.dart';
@@ -10,7 +8,6 @@ import 'package:coody/features/home/screens/widget/complete/offers_com.dart';
 import 'package:coody/features/home/screens/widget/complete/prodcte_com.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,6 +23,36 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
+        appBar: appBars(
+          context: context,
+          isback: false,
+          titte: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Deliver to',
+                style: TextStyle(
+                    color: const Color(0xffFC6E2A),
+                    fontSize: 12,
+                    fontFamily: GoogleFonts.sen().fontFamily,
+                    fontWeight: FontWeight.bold),
+              ),
+              const Gap(1),
+              Text(
+                ' context.re>().location',
+                style: TextStyle(
+                    color: const Color(0xff676767),
+                    fontSize: 14,
+                    fontFamily: GoogleFonts.sen().fontFamily,
+                    fontWeight: FontWeight.normal),
+              ),
+            ],
+          ),
+          ontapAction: () {
+            pushTo(context, const CartScreen());
+          },
+          actioniamage: 'assets/cart.png',
+        ),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -33,41 +60,6 @@ class _HomeViewState extends State<HomeView> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppBarCustome(
-                      ontap: () {
-                        if (ZoomDrawer.of(context)!.isOpen()) {
-                          ZoomDrawer.of(context)!.close();
-                        } else {
-                          ZoomDrawer.of(context)!.open();
-                        }
-                      },
-                      titte: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Deliver to',
-                            style: TextStyle(
-                                color: const Color(0xffFC6E2A),
-                                fontSize: 12,
-                                fontFamily: GoogleFonts.sen().fontFamily,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          const Gap(1),
-                          Text(
-                            ' context.re>().location',
-                            style: TextStyle(
-                                color: const Color(0xff676767),
-                                fontSize: 14,
-                                fontFamily: GoogleFonts.sen().fontFamily,
-                                fontWeight: FontWeight.normal),
-                          ),
-                        ],
-                      ),
-                      ontapAction: () {
-                        pushTo(context, const CartScreen());
-                      },
-                      actioniamage: 'assets/cart.png',
-                    ),
                     const Gap(20),
                     Text.rich(TextSpan(
                         text:

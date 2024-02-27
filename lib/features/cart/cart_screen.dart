@@ -1,9 +1,10 @@
 import 'package:coody/core/models/prodctecart.dart';
 import 'package:coody/core/utils/colors.dart';
+import 'package:coody/core/utils/style.dart';
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/features/cart/bloc/cart_cubit.dart';
 import 'package:coody/features/cart/bloc/cart_state.dart';
-import 'package:coody/features/cart/widget/appbar.dart';
 import 'package:coody/features/cart/widget/cart_card.dart';
 import 'package:coody/features/cart/widget/check_out_card.dart';
 import 'package:coody/features/cart/widget/emptycart.dart';
@@ -42,12 +43,20 @@ class _CartScreenState extends State<CartScreen> {
 
       return Scaffold(
         backgroundColor: AppColors.scaffoldBGdark,
+        appBar: appBars(
+            context: context,
+            isback: true,
+            color: AppColors.scaffoldBGdark,
+            // isdacekbak: true,
+            titte: Text(
+              'Cart',
+              style: getappbartextStyle(color: Colors.white),
+            )),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
-                const AppBarcard(),
                 Expanded(
                   child: ListView.builder(
                     itemCount: prodctelist.length,

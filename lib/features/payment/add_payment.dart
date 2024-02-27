@@ -1,6 +1,6 @@
 import 'package:coody/core/models/payment_model.dart';
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/appbar_custome.dart';
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/button_widget.dart';
 import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/core/widgets/textinput_widget.dart';
@@ -40,6 +40,13 @@ class _AddPaymentState extends State<AddPayment> {
       }
     }, builder: (context, state) {
       return Scaffold(
+        appBar: appBars(
+            context: context,
+            isback: true,
+            titte: Text(
+              'Add Addressc',
+              style: getappbartextStyle(),
+            )),
         bottomNavigationBar: Container(
           padding: const EdgeInsets.all(20),
           child: Buton(
@@ -62,14 +69,6 @@ class _AddPaymentState extends State<AddPayment> {
               padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  AppBarCustome(
-                    isback: true,
-                    titte: Center(
-                        child: Text(
-                      'Add Addressc',
-                      style: getappbartextStyle(),
-                    )),
-                  ),
                   const Gap(20),
                   TextInput(
                       hinttext: 'CARD HOLDER NAME',

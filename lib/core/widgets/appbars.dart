@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:gap/gap.dart';
 
 PreferredSizeWidget appBars(
@@ -7,9 +8,11 @@ PreferredSizeWidget appBars(
     bool isdacekbak = false,
     String? actioniamage,
     Widget? titte,
+    Color color = Colors.white,
     Function()? ontap,
     Function()? ontapAction}) {
   return AppBar(
+    backgroundColor: color,
     leadingWidth: 60,
     leading: Container(
       margin: const EdgeInsets.only(top: 5, left: 15),
@@ -18,7 +21,16 @@ PreferredSizeWidget appBars(
       child: Row(children: [
         InkWell(
           onTap: () {
-            Navigator.pop(context);
+            if (isback) {
+              Navigator.pop(context);
+            }
+            if (ontap != null) {
+              if (ZoomDrawer.of(context)!.isOpen()) {
+                ZoomDrawer.of(context)!.close();
+              } else {
+                ZoomDrawer.of(context)!.open();
+              }
+            }
           },
           child: Container(
             width: 45,
@@ -36,7 +48,7 @@ PreferredSizeWidget appBars(
         ),
       ]),
     ),
-    title: titte ?? const Gap(1),
+    title: titte ?? const SizedBox(),
     centerTitle: false,
     actions: [
       actioniamage == null
@@ -57,6 +69,7 @@ PreferredSizeWidget appBars(
                 ),
               ),
             ),
+      const Gap(15)
     ],
   );
 }

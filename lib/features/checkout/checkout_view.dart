@@ -1,7 +1,7 @@
 import 'package:coody/core/functions/routing.dart';
 import 'package:coody/core/utils/colors.dart';
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/appbar_custome.dart';
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/button_widget.dart';
 import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/features/checkout/bloc/checkout_cubit.dart';
@@ -52,6 +52,14 @@ class _CheckoutViewState extends State<CheckoutView> {
       }
     }, builder: (context, state) {
       return Scaffold(
+        appBar: appBars(
+          context: context,
+          isback: true,
+          titte: Text(
+            'Check Out',
+            style: getbodyStyle(fontSize: 17, fontWeight: FontWeight.normal),
+          ),
+        ),
         body: SafeArea(
             child: Padding(
           padding: const EdgeInsets.all(10),
@@ -59,16 +67,6 @@ class _CheckoutViewState extends State<CheckoutView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppBarCustome(
-                  isback: true,
-                  titte: Center(
-                    child: Text(
-                      'Check Out',
-                      style: getbodyStyle(
-                          fontSize: 17, fontWeight: FontWeight.normal),
-                    ),
-                  ),
-                ),
                 const Gap(30),
                 PaymentComp(
                   onSelectedItem: (value) {

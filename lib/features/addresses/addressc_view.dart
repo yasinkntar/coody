@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coody/core/functions/routing.dart';
 import 'package:coody/core/models/users_addrees.dart';
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/appbar_custome.dart';
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/button_widget.dart';
 import 'package:coody/features/addresses/add_addresc/addaddress_view.dart';
 import 'package:coody/features/addresses/widget/addrees_widget.dart';
@@ -38,6 +38,15 @@ class _AddresscViewState extends State<AddresscView> {
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
       return Scaffold(
+        appBar: appBars(
+          context: context,
+          isback: true,
+          titte: Center(
+              child: Text(
+            'My Addressc',
+            style: getappbartextStyle(),
+          )),
+        ),
         bottomNavigationBar: Container(
           padding: const EdgeInsets.all(20),
           child: Buton(
@@ -49,7 +58,8 @@ class _AddresscViewState extends State<AddresscView> {
         ),
         body: StreamBuilder(
             stream: FirebaseFirestore.instance
-                .collection('Addressc').where('uuid' ,isEqualTo: user?.uid)
+                .collection('Addressc')
+                .where('uuid', isEqualTo: user?.uid)
                 .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
@@ -57,7 +67,7 @@ class _AddresscViewState extends State<AddresscView> {
                   child: CircularProgressIndicator(),
                 );
               }
-            
+
               if (snapshot.data?.size == 0) {
                 return Center(
                   child: Column(
@@ -79,24 +89,15 @@ class _AddresscViewState extends State<AddresscView> {
                 );
               }
               List<UserAddressc> list = [];
-                snapshot.data!.docs.forEach((element) {
-            list.add(UserAddressc.fromJson(element));
-          });
-       
+              snapshot.data!.docs.forEach((element) {
+                list.add(UserAddressc.fromJson(element));
+              });
+
               return SafeArea(
                   child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    AppBarCustome(
-                      isback: true,
-                      titte: Center(
-                          child: Text(
-                        'My Addressc',
-                        style: getappbartextStyle(),
-                      )),
-                    ),
-                    const Gap(25),
                     Expanded(
                       child: AnimatedListView(
                         // scrollDirection: Axis.horizontal,

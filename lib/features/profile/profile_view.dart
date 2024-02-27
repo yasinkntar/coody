@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coody/core/functions/routing.dart';
 import 'package:coody/core/utils/colors.dart';
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/appbar_custome.dart';
+import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/features/addresses/addressc_view.dart';
 import 'package:coody/features/auth/presentation/screens/login_view.dart';
 import 'package:coody/features/cart/cart_screen.dart';
@@ -47,6 +47,14 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBars(
+        context: context,
+        isback: true,
+        titte: Text(
+          'Profile',
+          style: getbodyStyle(fontSize: 17, fontWeight: FontWeight.normal),
+        ),
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.only(
@@ -67,17 +75,6 @@ class _ProfileViewState extends State<ProfileView> {
                 }
                 var userData = snapshot.data;
                 return Column(children: [
-                  AppBarCustome(
-                    isback: true,
-                    titte: Center(
-                      child: Text(
-                        'Profile',
-                        style: getbodyStyle(
-                            fontSize: 17, fontWeight: FontWeight.normal),
-                      ),
-                    ),
-                  ),
-                  const Gap(30),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
