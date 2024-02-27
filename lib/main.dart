@@ -50,39 +50,41 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primaryColor: AppColors.colorprimer,
+              primaryColor: AppColors.colorprimer,
+              appBarTheme:
+                  AppBarTheme(backgroundColor: Colors.white, elevation: 1),
+              // scaffoldBackgroundColor: const Color(0xff121223)
+              snackBarTheme:
+                  const SnackBarThemeData(backgroundColor: Colors.red),
+              inputDecorationTheme: InputDecorationTheme(
+                fillColor: const Color(0xfff0f5fa),
+                alignLabelWithHint: true,
 
-            // scaffoldBackgroundColor: const Color(0xff121223)
-            snackBarTheme: const SnackBarThemeData(backgroundColor: Colors.red),
-            inputDecorationTheme: InputDecorationTheme(
-              fillColor: const Color(0xfff0f5fa),
-              alignLabelWithHint: true,
-
-              // contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              hintStyle: GoogleFonts.sen().copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: const Color(0xff31343d)),
-              enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color(0xfff0f5fa),
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xfff0f5fa)),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              focusedErrorBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color(0xfff0f5fa),
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              errorBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color(0xfff0f5fa),
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-            ),
-          ),
+                // contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                hintStyle: GoogleFonts.sen().copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: const Color(0xff31343d)),
+                enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xfff0f5fa),
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xfff0f5fa)),
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                focusedErrorBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xfff0f5fa),
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                errorBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xfff0f5fa),
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+              ),
+              useMaterial3: false),
           home: const SplasschScreeen()),
     );
   }
