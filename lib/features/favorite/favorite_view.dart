@@ -41,8 +41,6 @@ class FavoriteViewState extends State<FavoriteView> {
               );
             }
            
-            CollectionReference itemsRef = FirebaseFirestore.instance.collection("items");
-            // Query query = itemsRef.("postedBy", user_id);
             return SafeArea(
                 child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
