@@ -1,3 +1,3 @@
 # coody
 
-A new Flutter project.
+Final project for the Kimit Academy course
