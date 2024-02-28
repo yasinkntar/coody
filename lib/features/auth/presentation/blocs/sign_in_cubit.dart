@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:coody/features/auth/presentation/blocs/sign_in_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -86,7 +87,7 @@ class AuthCubit extends Cubit<AuthStates> {
         await FirebaseAuth.instance.signInWithCredential(credential);
       }
     } on FirebaseAuthException catch (e) {
-      print(e.stackTrace.toString());
+      emit(LoginErrorState(error: e.toString()));
     }
   }
 }

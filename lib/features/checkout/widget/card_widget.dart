@@ -18,11 +18,11 @@ class CardSelect extends StatefulWidget {
 
 class _CardSelectState extends State<CardSelect> {
   User? user;
-  String? UserID;
+  String? userID;
 
   Future<void> _getUser() async {
     user = FirebaseAuth.instance.currentUser;
-    UserID = user?.uid;
+    userID = user?.uid;
   }
 
   @override
@@ -52,9 +52,9 @@ class _CardSelectState extends State<CardSelect> {
                     ontap: () => pushTo(context, const AddPayment())));
           }
           List<PaymentID> list = [];
-          snapshot.data!.docs.forEach((element) {
+          for (var element in snapshot.data!.docs) {
             list.add(PaymentID.fromJson(element, element.id));
-          });
+          }
           paymentModel = list[0];
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -110,7 +110,7 @@ class _HomeViewState extends State<HomeView> {
                     //         )
                     //       ]),
                     // ),
-                    OffersComplete(),
+                    const OffersComplete(),
                     const Gap(30),
                     const CategoriesComplete(),
                     const Gap(30),

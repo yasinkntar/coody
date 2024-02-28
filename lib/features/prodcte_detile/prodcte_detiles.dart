@@ -13,7 +13,6 @@ import 'package:coody/features/prodcte_detile/widget/appbar.dart';
 import 'package:coody/features/prodcte_detile/widget/button_cart.dart';
 import 'package:coody/features/prodcte_detile/widget/choice_Item.dart';
 import 'package:coody/features/prodcte_detile/widget/item.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';

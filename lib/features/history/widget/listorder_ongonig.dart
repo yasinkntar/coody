@@ -15,12 +15,12 @@ class ListOrderOngoing extends StatefulWidget {
 class _ListOrderOngoingState extends State<ListOrderOngoing> {
   User? user;
 
-  String? UserID;
+  String? userID;
 
   Future<void> _getUser() async {
     user = FirebaseAuth.instance.currentUser;
 
-    UserID = user?.uid;
+    userID = user?.uid;
   }
 
   @override
@@ -35,7 +35,7 @@ class _ListOrderOngoingState extends State<ListOrderOngoing> {
         stream: FirebaseFirestore.instance
             .collection('Orders')
             .where('status', whereIn: [0, 1, 2])
-            .where('UserID', isEqualTo: UserID)
+            .where('userID', isEqualTo: userID)
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {

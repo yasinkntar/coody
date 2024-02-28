@@ -95,18 +95,18 @@ class CheckoutCubit extends Cubit<CheckoutStates> {
       emit(CheckoutLodingState());
       var db = FirebaseFirestore.instance;
       User? user;
-      String? UserID;
+      String? userID;
       List<Map<String, dynamic>> lisa = [];
       user = FirebaseAuth.instance.currentUser;
-      UserID = user?.uid;
+      userID = user?.uid;
       DateFormat format = DateFormat("yyyy-MM-dd hh:mm:ss");
       var date = format.parse(DateTime.now().toString());
-      items!.forEach((element) {
+      for (var element in items!) {
         lisa.add(element.toFirestore());
-      });
+      }
       db.collection('Orders').add(
         {
-          'UserID': UserID,
+          'userID': userID,
           'TypePayment': typePayment!.index,
           'Payment': typePayment == TypePayment.visa ? selectpayment?.id : null,
           'TypeReceiving': typeReceiving!.index,

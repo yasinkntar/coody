@@ -15,6 +15,7 @@ class ItemOrder extends StatefulWidget {
       required this.buttontext,
       required this.outlinetext,
       required this.outline});
+  // ignore: prefer_typing_uninitialized_variables
   final data;
   final String uid;
   final Function outline;
@@ -131,13 +132,13 @@ class _ItemOrderState extends State<ItemOrder> {
                         Text(
                           '|',
                           style: getbodyStyle(
-                              fontSize: 14, color: Color(0xff6B6E82)),
+                              fontSize: 14, color: const Color(0xff6B6E82)),
                         ),
                         const Gap(5),
                         Text(
                           '${List.from(widget.data["Items"]).length} items',
                           style: getbodyStyle(
-                              fontSize: 14, color: Color(0xff6B6E82)),
+                              fontSize: 14, color: const Color(0xff6B6E82)),
                         ),
                       ],
                     ),
@@ -150,7 +151,7 @@ class _ItemOrderState extends State<ItemOrder> {
                           )
                           .toString(),
                       style:
-                          getbodyStyle(fontSize: 14, color: Color(0xff6B6E82)),
+                          getbodyStyle(fontSize: 14, color: const Color(0xff6B6E82)),
                     ),
                   ],
                 )

@@ -44,7 +44,7 @@ class _AppBarCustomeState extends State<AppBarCustome> {
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
-                        return Center();
+                        return const Center();
                       }
 
                       List<CategoriesModel>? listcatgory = [];

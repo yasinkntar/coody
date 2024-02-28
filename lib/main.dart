@@ -9,6 +9,7 @@ import 'package:coody/features/splassch_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -51,8 +52,8 @@ class MainApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
               primaryColor: AppColors.colorprimer,
-              appBarTheme:
-                  AppBarTheme(backgroundColor: Colors.white, elevation: 1),
+              appBarTheme: const AppBarTheme(
+                  backgroundColor: Colors.white, elevation: 0),
               // scaffoldBackgroundColor: const Color(0xff121223)
               snackBarTheme:
                   const SnackBarThemeData(backgroundColor: Colors.red),

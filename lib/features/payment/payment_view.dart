@@ -21,11 +21,11 @@ class PaymentView extends StatefulWidget {
 
 class _PaymentViewState extends State<PaymentView> {
   User? user;
-  String? UserID;
+  String? userID;
 
   Future<void> _getUser() async {
     user = FirebaseAuth.instance.currentUser;
-    UserID = user?.uid;
+    userID = user?.uid;
   }
 
   @override
@@ -87,9 +87,9 @@ class _PaymentViewState extends State<PaymentView> {
                 );
               }
               List<PaymentModel> list = [];
-              snapshot.data!.docs.forEach((element) {
+              for (var element in snapshot.data!.docs) {
                 list.add(PaymentModel.fromJson(element));
-              });
+              }
               return SafeArea(
                   child: Padding(
                 padding: const EdgeInsets.all(20),

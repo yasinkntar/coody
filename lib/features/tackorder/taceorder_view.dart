@@ -1,10 +1,12 @@
 import 'package:another_stepper/dto/stepper_data.dart';
 import 'package:another_stepper/widgets/another_stepper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coody/core/utils/colors.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/core/widgets/appbars.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 
 class TackOrderView extends StatefulWidget {
@@ -18,11 +20,11 @@ class _TackOrderViewState extends State<TackOrderView> {
   int activeIndex = 3;
   User? user;
 
-  String? UserID;
+  String? userID;
 
   Future<void> _getUser() async {
     user = FirebaseAuth.instance.currentUser;
-    UserID = user?.uid;
+    userID = user?.uid;
   }
 
   @override
@@ -88,21 +90,61 @@ class _TackOrderViewState extends State<TackOrderView> {
             ),
             bottomSheet: Container(
               width: double.infinity,
-              height: 300,
+              height: 400,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Padding(
                 padding: const EdgeInsets.only(top: 20, left: 20),
-                child: AnotherStepper(
-                  stepperList: stepperData,
-                  stepperDirection: Axis.vertical,
-                  iconWidth: 40,
-                  iconHeight: 40,
-                  inverted: false,
-                  verticalGap: 15,
-                  activeIndex:
-                      int.tryParse(snapshot.data!["status"].toString()) ?? 0,
-                  barThickness: 8,
+                child: Column(
+                  children: [
+                    AnotherStepper(
+                      stepperList: stepperData,
+                      stepperDirection: Axis.vertical,
+                      iconWidth: 40,
+                      iconHeight: 40,
+                      inverted: false,
+                      verticalGap: 15,
+                      activeIndex:
+                          int.tryParse(snapshot.data!["status"].toString()) ??
+                              0,
+                      barThickness: 8,
+                    ),
+                    const Spacer(),
+                    int.tryParse(snapshot.data!["status"].toString()) == 2
+                        ? Container(
+                            width: double.infinity,
+                            height: 90,
+                            color: Colors.amber,
+                            child: Row(children: [
+                              Container(
+                                width: 70,
+                                height: 70,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle, color: Colors.red),
+                              ),
+                              const Gap(10),
+                              const Center(child: Text('Basem Alfide')),
+                              const Spacer(),
+                              Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.colorprimer),
+                              ),
+                              const Gap(10),
+                              Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.colorprimer),
+                              ),
+                              const Gap(10),
+                            ]),
+                          )
+                        : const SizedBox()
+                  ],
                 ),
               ),
             ),

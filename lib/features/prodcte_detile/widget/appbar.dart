@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class AppBarProdcteDetiles extends StatelessWidget {
   const AppBarProdcteDetiles(
       {super.key, required this.prodcteid});
+  // ignore: prefer_typing_uninitialized_variables
   final prodcteid;
   @override
   Widget build(BuildContext context) {

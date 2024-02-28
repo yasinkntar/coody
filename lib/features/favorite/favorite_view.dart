@@ -61,7 +61,7 @@ class FavoriteViewState extends State<FavoriteView> {
                                 //       // uidpodcte: snapshot.data!.docs[index].id,
                                 //     ));
                               },
-                              child: Center()
+                              child: const Center()
 
                               //  BurgercomponentItemWidget(
                               //     prodcte: ),

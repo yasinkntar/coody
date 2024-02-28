@@ -24,11 +24,11 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   User? user;
 
-  String? UserID;
+  String? userID;
 
   Future<void> _getUser() async {
     user = FirebaseAuth.instance.currentUser;
-    UserID = user?.uid;
+    userID = user?.uid;
   }
 
   String? _imagePath;

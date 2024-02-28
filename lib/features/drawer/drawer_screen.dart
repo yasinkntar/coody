@@ -52,15 +52,15 @@ class _DrawerScreenState extends State<DrawerScreen> {
       case MenuItems.explorymune:
         return const ProdcteView();
       case MenuItems.offers:
-        return Center();
+        return const Center();
       case MenuItems.orderhistory:
         return const HistoryOrderView();
       case MenuItems.setting:
-        return Center();
+        return const Center();
       case MenuItems.trackorder:
-        return Center();
+        return const Center();
       default:
-        return HomeView();
+        return const HomeView();
     }
   }
 }

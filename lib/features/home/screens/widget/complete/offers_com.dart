@@ -10,7 +10,7 @@ import 'package:shaky_animated_listview/widgets/animated_listview.dart';
 
 // ignore: must_be_immutable
 class OffersComplete extends StatefulWidget {
-  OffersComplete({super.key});
+  const OffersComplete({super.key});
   @override
   State<OffersComplete> createState() => _OffersCompleteState();
 }

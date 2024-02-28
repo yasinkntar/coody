@@ -13,12 +13,12 @@ class ListOrderHistory extends StatefulWidget {
 class _ListOrderHistoryState extends State<ListOrderHistory> {
   User? user;
 
-  String? UserID;
+  String? userID;
 
   Future<void> _getUser() async {
     user = FirebaseAuth.instance.currentUser;
 
-    UserID = user?.uid;
+    userID = user?.uid;
   }
 
   @override
@@ -33,7 +33,7 @@ class _ListOrderHistoryState extends State<ListOrderHistory> {
         stream: FirebaseFirestore.instance
             .collection('Orders')
             .where('status', whereIn: [3, 4, 5])
-            .where('UserID', isEqualTo: UserID)
+            .where('userID', isEqualTo: userID)
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {

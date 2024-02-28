@@ -19,11 +19,11 @@ class AddresscCard extends StatefulWidget {
 
 class _AddresscCardState extends State<AddresscCard> {
   User? user;
-  String? UserID;
+  String? userID;
 
   Future<void> _getUser() async {
     user = FirebaseAuth.instance.currentUser;
-    UserID = user?.uid;
+    userID = user?.uid;
   }
 
   @override
@@ -53,9 +53,9 @@ class _AddresscCardState extends State<AddresscCard> {
                     ontap: () => pushTo(context, const AddAddresscView())));
           }
           List<Addressca> list = [];
-          snapshot.data!.docs.forEach((element) {
+          for (var element in snapshot.data!.docs) {
             list.add(Addressca.fromJson(element, element.id));
-          });
+          }
 
           // selectitem = list[0];
           return Column(

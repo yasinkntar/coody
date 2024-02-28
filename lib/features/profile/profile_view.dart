@@ -28,12 +28,12 @@ class ProfileView extends StatefulWidget {
 class _ProfileViewState extends State<ProfileView> {
   User? user;
 
-  String? UserID;
+  String? userID;
 
   Future<void> _getUser() async {
     user = FirebaseAuth.instance.currentUser;
 
-    UserID = user?.uid;
+    userID = user?.uid;
   }
 
   String? _imagePath;

@@ -17,18 +17,18 @@ class ProfileCubit extends Cubit<ProfileStates> {
   String? profileUrl;
 
   User? user;
-  String? UserID;
+  String? userID;
 
   Future<void> getUser() async {
     user = FirebaseAuth.instance.currentUser;
-    UserID = user?.uid;
+    userID = user?.uid;
   }
 
   uploadImageToFireStore(File image, String imageName) async {
-    final FirebaseStorage _storage =
+    final FirebaseStorage storage =
         FirebaseStorage.instanceFor(bucket: 'gs://conloe.appspot.com');
     Reference ref =
-        _storage.ref().child('Users/${_auth.currentUser!.uid}$imageName');
+        storage.ref().child('Users/${_auth.currentUser!.uid}$imageName');
     SettableMetadata metadata = SettableMetadata(contentType: 'image/jpeg');
     await ref.putFile(image, metadata);
     String url = await ref.getDownloadURL();
@@ -48,7 +48,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
     }
     emit(ProfileUpdateImage(pathimage: _imagePath!));
     profileUrl = await uploadImageToFireStore(file!, 'doc');
-    FirebaseFirestore.instance.collection('Users').doc(UserID).set({
+    FirebaseFirestore.instance.collection('Users').doc(userID).set({
       'image': profileUrl,
     }, SetOptions(merge: true));
     emit(ProfileSuccessState());

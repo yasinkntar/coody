@@ -49,8 +49,6 @@ class _ProdcteViewState extends State<ProdcteView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        
-          
           leading: GestureDetector(
             onTap: () => Navigator.of(context).pop(),
             child: Container(
@@ -153,9 +151,9 @@ class _ProdcteViewState extends State<ProdcteView> {
               ]),
             ),
             Container(
-              height: 20,
+              height: 15,
               width: double.infinity,
-              color: Color(0xffefe6e1),
+              color: const Color(0xffD0D9E1),
             ),
             Container(
               padding: const EdgeInsets.all(20),

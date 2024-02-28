@@ -61,7 +61,7 @@ class _EditProfileViewState extends State<EditProfileView> {
             child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('Users')
-                    .doc(context.read<ProfileCubit>().UserID)
+                    .doc(context.read<ProfileCubit>().userID)
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {

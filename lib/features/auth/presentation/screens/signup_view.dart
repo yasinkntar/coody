@@ -7,7 +7,7 @@ import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/core/widgets/textinput_widget.dart';
 import 'package:coody/features/auth/presentation/blocs/sign_in_cubit.dart';
 import 'package:coody/features/auth/presentation/blocs/sign_in_state.dart';
-import 'package:coody/features/home/screens/home_view.dart';
+import 'package:coody/features/drawer/drawer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:coody/core/utils/size_config.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -169,7 +169,7 @@ Widget sendmesssageotp(BuildContext context, String email) {
         const Gap(15),
         InkWell(
           onTap: () {
-            pushAndRemoveUntil(context, HomeView());
+            pushAndRemoveUntil(context, const DrawerScreen());
           },
           child: Container(
             width: 150,
