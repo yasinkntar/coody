@@ -54,6 +54,7 @@ class _TextInputState extends State<TextInput> {
             : const SizedBox(),
         widget.showlabel ? const Gap(10) : const SizedBox(),
         TextFormField(
+          cursorColor: AppColors.colorprimer,
           inputFormatters: widget.maskTextInputFormatter == null
               ? []
               : [widget.maskTextInputFormatter!],
@@ -127,7 +128,7 @@ class _TextInputState extends State<TextInput> {
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
           ),
         ),
-        const Gap(15)
+        const Gap(10)
       ],
     );
   }

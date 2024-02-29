@@ -7,6 +7,7 @@ import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/core/widgets/textinput_widget.dart';
 import 'package:coody/features/auth/presentation/blocs/sign_in_cubit.dart';
 import 'package:coody/features/auth/presentation/blocs/sign_in_state.dart';
+import 'package:coody/features/auth/widget/appbarsauth.dart';
 import 'package:coody/features/drawer/drawer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:coody/core/utils/size_config.dart';
@@ -45,44 +46,44 @@ class _SignupViewState extends State<SignupView> {
     }, builder: (context, state) {
       return Scaffold(
         backgroundColor: AppColors.scaffoldBGdark,
-        appBar: appBars(context: context,isback: true),
+      
         body: SafeArea(
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Form(
               key: formKey,
               child: Column(
                 children: [
                   Container(
                     width: SizeConfig.screenWidth,
-                    height: SizeConfig.screenHeight * 0.28,
+                    height: SizeConfig.screenHeight * 0.26,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             alignment: Alignment.center,
                             image: AssetImage('assets/splassch.png'),
                             fit: BoxFit.fill)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 50),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                
-                            Text('Sign Up',
-                                style: getbodyStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.white)),
-                            const Gap(10),
-                            Text('Please sign up to get started',
-                                style: getbodyStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.white)),
-                          ]),
-                    ),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          appBars(context: context, color: Colors.transparent),
+                          const Gap(15),
+                          Text('Sign Up',
+                              style: getbodyStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.white)),
+                          const Gap(10),
+                          Text('Please sign up to get started',
+                              style: getbodyStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.white)),
+                        ]),
                   ),
                   Container(
                     width: SizeConfig.screenWidth,
-                    height: SizeConfig.screenHeight * 0.72,
+                    height: SizeConfig.screenHeight * 0.74,
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
@@ -90,7 +91,7 @@ class _SignupViewState extends State<SignupView> {
                           topRight: Radius.circular(24),
                         )),
                     child: Padding(
-                        padding: const EdgeInsets.fromLTRB(19, 30, 20, 21),
+                        padding: const EdgeInsets.fromLTRB(19, 25, 20, 15),
                         child: Column(
                           children: [
                             TextInput(

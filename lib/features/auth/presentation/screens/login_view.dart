@@ -43,11 +43,12 @@ class _LoginViewState extends State<LoginView> {
           backgroundColor: AppColors.scaffoldBGdark,
           body: SafeArea(
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   Container(
                     width: SizeConfig.screenWidth,
-                    height: SizeConfig.screenHeight * 0.28,
+                    height: SizeConfig.screenHeight * 0.26,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             alignment: Alignment.center,
@@ -72,7 +73,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   Container(
                     width: SizeConfig.screenWidth,
-                    height: SizeConfig.screenHeight * 0.72,
+                    height: SizeConfig.screenHeight * 0.74,
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
@@ -80,7 +81,7 @@ class _LoginViewState extends State<LoginView> {
                           topRight: Radius.circular(24),
                         )),
                     child: Padding(
-                        padding: const EdgeInsets.fromLTRB(19, 30, 20, 21),
+                        padding: const EdgeInsets.fromLTRB(19, 25, 20, 15),
                         child: Column(
                           children: [
                             TextInput(
@@ -101,7 +102,8 @@ class _LoginViewState extends State<LoginView> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    pushTo(context, const ForgotPasswordView());
+                                    pushTo(context, const ForgotPasswordView(),
+                                        axis: AxisDirection.up);
                                   },
                                   child: Text('Forgot Password',
                                       style: getTitleStyle(

@@ -1,3 +1,4 @@
+import 'package:coody/core/functions/routing.dart';
 import 'package:coody/core/utils/colors.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/core/widgets/appbars.dart';
@@ -6,6 +7,7 @@ import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/core/widgets/textinput_widget.dart';
 import 'package:coody/features/auth/presentation/blocs/sign_in_cubit.dart';
 import 'package:coody/features/auth/presentation/blocs/sign_in_state.dart';
+import 'package:coody/features/auth/presentation/screens/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:coody/core/utils/size_config.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +40,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
     }, builder: (context, state) {
       return Scaffold(
         backgroundColor: AppColors.scaffoldBGdark,
-        appBar: appBars(context: context, isback: true),
+        // appBar: appBars(context: context, isback: true),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Form(
@@ -47,34 +49,33 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 children: [
                   Container(
                     width: SizeConfig.screenWidth,
-                    height: SizeConfig.screenHeight * 0.28,
+                    height: SizeConfig.screenHeight * 0.26,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             alignment: Alignment.center,
                             image: AssetImage('assets/splassch.png'),
                             fit: BoxFit.fill)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 50),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text('Forgot Password',
-                                style: getbodyStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.white)),
-                            const Gap(10),
-                            Text('Please sign in to your existing account',
-                                style: getbodyStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.white)),
-                          ]),
-                    ),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          appBars(context: context, color: Colors.transparent),
+                          const Gap(15),
+                          Text('Forgot Password',
+                              style: getbodyStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.white)),
+                          const Gap(10),
+                          Text('Please sign in to your existing account',
+                              style: getbodyStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.white)),
+                        ]),
                   ),
                   Container(
                     width: SizeConfig.screenWidth,
-                    height: SizeConfig.screenHeight * 0.72,
+                    height: SizeConfig.screenHeight * 0.74,
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
@@ -142,7 +143,9 @@ Widget sendrestotp(BuildContext context, String email) {
                 color: const Color(0xff31343d))),
         const Gap(15),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            pushAndRemoveUntil(context, const LoginView());
+          },
           child: Container(
             width: 150,
             height: 62,
