@@ -1,18 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coody/core/models/categories_model.dart';
-import 'package:coody/core/models/prodcte_model.dart';
-import 'package:coody/core/utils/colors.dart';
-import 'package:coody/core/utils/size_config.dart';
+
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/item_prodcte.dart';
 import 'package:coody/features/prodcte/widget/appbar.dart';
-import 'package:coody/features/prodcte/widget/dilogfilter.dart';
 import 'package:coody/features/prodcte/widget/prodcte_item.dart';
-import 'package:coody/features/prodcte/widget/tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:shaky_animated_listview/animators/grid_animator.dart';
 
 class ProdcteView extends StatefulWidget {
   const ProdcteView({super.key});

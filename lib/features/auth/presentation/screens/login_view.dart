@@ -8,7 +8,7 @@ import 'package:coody/features/auth/presentation/blocs/sign_in_cubit.dart';
 import 'package:coody/features/auth/presentation/blocs/sign_in_state.dart';
 import 'package:coody/features/auth/presentation/screens/forgotpassword.dart';
 import 'package:coody/features/auth/presentation/screens/signup_view.dart';
-import 'package:coody/features/home/screens/home_view.dart';
+import 'package:coody/features/drawer/drawer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:coody/core/utils/size_config.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,12 +29,14 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthStates>(listener: (context, state) {
       if (state is LoginSuccessState) {
-        pushAndRemoveUntil(context, const HomeView());
+        pushAndRemoveUntil(context, const DrawerScreen());
       } else if (state is LoginErrorState) {
         Navigator.pop(context);
         showErrorDialog(context, state.error);
       } else if (state is LoginLoadingState) {
         showLoadingDialog(context);
+      } else if (state is LoginGoogleSuccessState) {
+        pushAndRemoveUntil(context, const DrawerScreen());
       }
     }, builder: (context, state) {
       return Form(

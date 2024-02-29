@@ -73,19 +73,31 @@ class AuthCubit extends Cubit<AuthStates> {
   }
 
   Future<void> signInWithGoogle() async {
+    emit(LoginLoadingState());
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
 
-      if (googleAuth?.accessToken != null && googleAuth?.idToken != null) {
-        final credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth?.accessToken,
-          idToken: googleAuth?.idToken,
-        );
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
 
-        await FirebaseAuth.instance.signInWithCredential(credential);
-      }
+      dynamic credentiala =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      User user = credentiala.user!;
+      user.updateDisplayName(user.displayName);
+      // firestore
+      FirebaseFirestore.instance.collection('Users').doc(user.uid).set({
+        'name': user.displayName,
+        'image': user.photoURL,
+        'email': user.email,
+        'phone': user.phoneNumber,
+        'bio': ''
+      }, SetOptions(merge: true));
+      emit(LoginGoogleSuccessState());
     } on FirebaseAuthException catch (e) {
       emit(LoginErrorState(error: e.toString()));
     }

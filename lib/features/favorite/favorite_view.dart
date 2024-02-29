@@ -1,10 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coody/core/functions/routing.dart';
-import 'package:coody/core/models/prodcte_model.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/core/widgets/appbars.dart';
-import 'package:coody/core/widgets/item_prodcte.dart';
-import 'package:coody/features/prodcte_detile/prodcte_detiles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shaky_animated_listview/animators/grid_animator.dart';

@@ -1,4 +1,3 @@
-import 'package:coody/core/widgets/favorite_widget.dart';
 import 'package:flutter/material.dart';
 
 class AppBarAuth extends StatelessWidget {

@@ -7,7 +7,6 @@ import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/core/widgets/textinput_widget.dart';
 import 'package:coody/features/auth/presentation/blocs/sign_in_cubit.dart';
 import 'package:coody/features/auth/presentation/blocs/sign_in_state.dart';
-import 'package:coody/features/auth/widget/appbarsauth.dart';
 import 'package:coody/features/drawer/drawer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:coody/core/utils/size_config.dart';

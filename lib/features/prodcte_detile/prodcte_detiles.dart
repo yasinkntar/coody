@@ -11,7 +11,7 @@ import 'package:coody/features/cart/bloc/cart_state.dart';
 import 'package:coody/features/prodcte_detile/models/option_menu.dart';
 import 'package:coody/features/prodcte_detile/widget/appbar.dart';
 import 'package:coody/features/prodcte_detile/widget/button_cart.dart';
-import 'package:coody/features/prodcte_detile/widget/choice_Item.dart';
+import 'package:coody/features/prodcte_detile/widget/choice_item.dart';
 import 'package:coody/features/prodcte_detile/widget/item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
