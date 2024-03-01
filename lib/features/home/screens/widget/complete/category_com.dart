@@ -19,6 +19,7 @@ class CategoriesComplete extends StatefulWidget {
 
 class _CategoriesCompleteState extends State<CategoriesComplete> {
   List<CategoriesModel>? listcatgory = [];
+  int selectindex = 0;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -44,7 +45,6 @@ class _CategoriesCompleteState extends State<CategoriesComplete> {
                   urlimage:
                       'https://i.ytimg.com/vi/QsCByv3Udpc/maxresdefault.jpg'));
           for (var element in snapshot.data!.docs) {
-     
             listcatgory!.add(CategoriesModel.fromJson(element));
           }
 
@@ -86,8 +86,16 @@ class _CategoriesCompleteState extends State<CategoriesComplete> {
                   children: List.generate(
                       listcatgory!.length,
                       (index) => GridAnimatorWidget(
-                            child: ItemCatgory(
-                              model: listcatgory![index],
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectindex = index;
+                                });
+                              },
+                              child: ItemCatgory(
+                                model: listcatgory![index],
+                                selectindex: selectindex == index,
+                              ),
                             ),
                           )),
                 ),

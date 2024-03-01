@@ -1,3 +1,4 @@
+import 'package:coody/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:gap/gap.dart';
@@ -8,6 +9,7 @@ PreferredSizeWidget appBars(
     bool isdacekbak = false,
     String? actioniamage,
     Widget? titte,
+    Color imagecolor = AppColors.buttoncolor,
     Color color = Colors.white,
     Function()? ontap,
     Function()? ontapAction}) {
@@ -23,8 +25,7 @@ PreferredSizeWidget appBars(
           onTap: () {
             if (isback) {
               Navigator.pop(context);
-            }
-            if (ontap != null) {
+            } else {
               if (ZoomDrawer.of(context)!.isOpen()) {
                 ZoomDrawer.of(context)!.close();
               } else {
@@ -61,8 +62,8 @@ PreferredSizeWidget appBars(
                 // margin: EdgeInsets.symmetric(horizontal: 10),
                 width: 45,
                 height: 49,
-                decoration: const BoxDecoration(
-                    color: Color(0xff181C2E), shape: BoxShape.circle),
+                decoration:
+                    BoxDecoration(color: imagecolor, shape: BoxShape.circle),
                 child: Image.asset(
                   actioniamage,
                   color: Colors.white,

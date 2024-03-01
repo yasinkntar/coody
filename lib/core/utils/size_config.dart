@@ -10,13 +10,18 @@ class SizeConfig {
   static double _safeAreaVertical = 0;
   static double safeBlockHorizontal = 0;
   static double safeBlockVertical = 0;
-
+  /*24 is for notification bar on Android*/
+  static double itemHeight = 0;
+  static double itemWidth = 0;
+  static double childAspectRatio = 0;
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData!.size.width;
     screenHeight = _mediaQueryData!.size.height -
         (_mediaQueryData!.padding.top + _mediaQueryData!.padding.bottom);
-
+    itemHeight = ((screenHeight - kToolbarHeight - 24) / 2) - 40;
+    itemWidth = screenWidth / 2;
+    childAspectRatio = (itemWidth / itemHeight);
     blockSizeHorizontal = screenWidth / 100;
     blockSizeVertical = screenHeight / 100;
     _safeAreaHorizontal =

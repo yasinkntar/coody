@@ -57,6 +57,7 @@ class _HomeViewState extends State<HomeView> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -114,7 +115,7 @@ class _HomeViewState extends State<HomeView> {
                     const Gap(30),
                     const CategoriesComplete(),
                     const Gap(30),
-                    const ProdcteComplete()
+                    const ProdcteComplete(),
                   ]),
             ),
           ),

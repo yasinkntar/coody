@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coody/core/functions/routing.dart';
 
 import 'package:coody/core/utils/colors.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/features/home/screens/widget/offers_item.dart';
+import 'package:coody/features/prodcte_detile/prodcte_detiles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shaky_animated_listview/animators/grid_animator.dart';
@@ -54,8 +56,18 @@ class _OffersCompleteState extends State<OffersComplete> {
                         children: List.generate(
                             snapshot.data!.size,
                             (index) => GridAnimatorWidget(
-                                  child: OffersItem(
-                                    data: snapshot.data!.docs[index],
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      pushTo(
+                                          context,
+                                          ProdcteDetiles(
+                                            uidpodcte: snapshot.data!
+                                                .docs[index]["prodctename"],
+                                          ));
+                                    },
+                                    child: OffersItem(
+                                      data: snapshot.data!.docs[index],
+                                    ),
                                   ),
                                 )),
                       ),

@@ -47,6 +47,7 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: appBars(
         context: context,
         isback: true,
@@ -80,11 +81,11 @@ class _ProfileViewState extends State<ProfileView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       CircleAvatar(
-                        radius: 60,
+                        radius: 40,
                         backgroundColor: AppColors.white,
                         child: CircleAvatar(
                           backgroundColor: AppColors.white,
-                          radius: 60,
+                          radius: 40,
                           backgroundImage: (userData?['image'] != null)
                               ? NetworkImage(userData?['image'])
                               : (_imagePath != null)
@@ -125,7 +126,8 @@ class _ProfileViewState extends State<ProfileView> {
                         pushTo(context, getscreen(item));
                       }
                     },
-                  )
+                  ),
+                  const Gap(15)
                 ]);
               }),
         ),

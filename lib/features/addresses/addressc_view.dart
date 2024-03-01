@@ -41,11 +41,10 @@ class _AddresscViewState extends State<AddresscView> {
         appBar: appBars(
           context: context,
           isback: true,
-          titte: Center(
-              child: Text(
+          titte: Text(
             'My Addressc',
             style: getappbartextStyle(),
-          )),
+          ),
         ),
         bottomNavigationBar: Container(
           padding: const EdgeInsets.all(20),

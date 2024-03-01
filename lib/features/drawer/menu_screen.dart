@@ -61,7 +61,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Gap(15),
+                      const Gap(10),
                       InkWell(
                         onTap: () {
                           pushTo(context, const ProfileView());
@@ -71,11 +71,11 @@ class _MenuScreenState extends State<MenuScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircleAvatar(
-                              radius: 40,
+                              radius: 30,
                               backgroundColor: AppColors.white,
                               child: CircleAvatar(
                                 backgroundColor: AppColors.white,
-                                radius: 40,
+                                radius: 30,
                                 backgroundImage: (userData?['image'] != null)
                                     ? NetworkImage(userData?['image'])
                                     : (_imagePath != null)

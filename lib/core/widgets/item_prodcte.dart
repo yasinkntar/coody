@@ -1,5 +1,6 @@
 import 'package:coody/core/models/prodcte_model.dart';
 import 'package:coody/core/utils/colors.dart';
+import 'package:coody/core/utils/size_config.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -148,9 +149,10 @@ class Prodcteitem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 153,
+      margin: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: AppColors.redColor,
+          borderRadius: BorderRadius.circular(15),
+          color: AppColors.white,
           boxShadow: const [
             BoxShadow(
               color: Color(0xadd7dae0),
@@ -229,96 +231,98 @@ class BurgercomponentItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: AppColors.white,
-          boxShadow: const [
-            BoxShadow(
-              color: Color(0xadd7dae0),
-              offset: Offset(1, 12),
-              blurRadius: 10,
-            ),
-          ]),
-      child: SizedBox(
-        height: 165,
-        width: 153,
-        child: Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: 130,
-                  width: 153,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(25)),
-                )),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: Image.network(
-                        prodcte.urlimage,
-                        height: 79,
-                        width: 153,
-                        fit: BoxFit.cover,
-                        alignment: Alignment.bottomCenter,
-                      ),
-                    ),
-                    const Gap(6),
-                    Text(
-                      prodcte.fullname,
-                      style: getbodyStyle(
-                          fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    const Gap(6),
-                    Text(
-                      prodcte.catgory,
-                      style: getbodyStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.textnorlma),
-                    ),
-                    const Gap(6),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 5,
-                            bottom: 4,
-                          ),
-                          child: Text(
-                            '${prodcte.price} EG',
-                            style: getbodyStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.white,
+            boxShadow: const [
+              BoxShadow(
+                color: Color(0xadd7dae0),
+                offset: Offset(1, 12),
+                blurRadius: 10,
+              ),
+            ]),
+        child: SizedBox(
+          height: 190,
+          width: 153,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    height: 130,
+                    width: 153,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(25)),
+                  )),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Image.network(
+                          prodcte.urlimage,
+                          height: 79,
+                          width: 153,
+                          fit: BoxFit.cover,
+                          alignment: Alignment.bottomCenter,
                         ),
-                        Container(
-                          width: 30,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              color: AppColors.colorprimer,
-                              shape: BoxShape.circle),
-                          child: Icon(
-                            Icons.add,
-                            color: AppColors.white,
+                      ),
+                      const Gap(6),
+                      Text(
+                        prodcte.fullname,
+                        style: getbodyStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                      const Gap(6),
+                      Text(
+                        prodcte.catgory,
+                        style: getbodyStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.textnorlma),
+                      ),
+                      const Gap(6),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 5,
+                              bottom: 4,
+                            ),
+                            child: Text(
+                              '${prodcte.price} EG',
+                              style: getbodyStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        )
-                      ],
-                    ),
-                  ],
+                          Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                                color: AppColors.colorprimer,
+                                shape: BoxShape.circle),
+                            child: Icon(
+                              Icons.add,
+                              color: AppColors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

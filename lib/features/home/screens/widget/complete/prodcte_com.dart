@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coody/core/functions/routing.dart';
 import 'package:coody/core/models/prodcte_model.dart';
 import 'package:coody/core/utils/colors.dart';
+import 'package:coody/core/utils/size_config.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/core/widgets/item_prodcte.dart';
 import 'package:coody/features/prodcte/prodcte_view.dart';
@@ -34,7 +35,6 @@ class _ProdcteCompleteState extends State<ProdcteComplete> {
           List<Prodcte>? listprodcte = [];
 
           snapshot.data?.docs.forEach((element) {
-        
             listprodcte.add(Prodcte.fromJson(element));
           });
           return Column(
@@ -65,31 +65,42 @@ class _ProdcteCompleteState extends State<ProdcteComplete> {
                 ],
               ),
               const Gap(15),
+
               SizedBox(
-                  height: 200,
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            crossAxisCount: 2),
-                    itemCount: listprodcte.length,
-                    itemBuilder: (context, index) {
-                      return GridAnimatorWidget(
-                        child: GestureDetector(
-                          onTap: () {
-                            pushTo(
-                                context,
-                                ProdcteDetiles(
-                                  uidpodcte: snapshot.data!.docs[index].id,
-                                ));
-                          },
-                          child: BurgercomponentItemWidget(
-                              prodcte: listprodcte[index]),
-                        ),
-                      );
-                    },
-                  ))
+                height: SizeConfig.screenHeight * 0.35,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: SizeConfig.childAspectRatio,
+                  controller: ScrollController(keepScrollOffset: false),
+                  shrinkWrap: true,
+                  children: listprodcte
+                      .map((e) => Prodcteitem(
+                            prodcte: e,
+                          ))
+                      .toList(),
+                ),
+              )
+
+              // SizedBox(
+              //     height: SizeConfig.screenHeight * 0.36,
+              //     child: ListView.builder(
+              //       scrollDirection: Axis.horizontal,
+              //       // separatorBuilder: (context, index) => const Gap(10),
+              //       itemCount: listprodcte.length,
+              //       itemBuilder: (context, index) => GridAnimatorWidget(
+              //         child: GestureDetector(
+              //           onTap: () {
+              //             pushTo(
+              //                 context,
+              //                 ProdcteDetiles(
+              //                   uidpodcte: snapshot.data!.docs[index].id,
+              //                 ));
+              //           },
+              //           child: Prodcteitem(prodcte: listprodcte[index]),
+              //         ),
+              //       ),
+              //     )),
+              // const Gap(40),
             ],
           );
         });

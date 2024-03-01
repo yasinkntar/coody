@@ -73,13 +73,13 @@ class _PaymentViewState extends State<PaymentView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/maps.png',
-                        width: 100,
-                        height: 100,
+                        'assets/credit.png',
+                        width: 150,
+                        height: 150,
                       ),
                       const Gap(15),
                       Text(
-                        'There are no addresses saved',
+                        'You have not added\n a payment method',
                         style: getbodyStyle(),
                       )
                     ],

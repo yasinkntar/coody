@@ -54,12 +54,13 @@ class MainApp extends StatelessWidget {
             primaryColor: AppColors.colorprimer,
             appBarTheme:
                 const AppBarTheme(backgroundColor: Colors.white, elevation: 0),
-            // scaffoldBackgroundColor: const Color(0xff121223)
+            scaffoldBackgroundColor: Colors.white,
+            
             snackBarTheme: const SnackBarThemeData(backgroundColor: Colors.red),
             inputDecorationTheme: InputDecorationTheme(
               fillColor: const Color(0xfff0f5fa),
               alignLabelWithHint: true,
- 
+
               // contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               hintStyle: GoogleFonts.sen().copyWith(
                   fontSize: 14,

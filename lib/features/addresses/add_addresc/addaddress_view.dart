@@ -43,104 +43,105 @@ class _AddAddresscViewState extends State<AddAddresscView> {
       return Form(
         key: formKey,
         child: Scaffold(
+          backgroundColor: const Color(0xffD0D9E1),
           appBar: appBars(
-            context: context,
-            isback: true,
-          ),
-          body: SafeArea(
+              context: context, isback: true, color: Colors.transparent),
+          bottomSheet: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      TextInput(
-                          hinttext: '3235 Royal Ln. mesa, new jersy 34567',
-                          labeltext: 'Address',
-                          ismandatory: true,
-                          controller: addresscController),
-                      Row(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
                         children: [
-                          Expanded(
-                            child: TextInput(
-                                hinttext: 'hason nagar',
-                                labeltext: 'street',
-                                ismandatory: true,
-                                controller: streetController),
+                          TextInput(
+                              hinttext: '3235 Royal Ln. mesa, new jersy 34567',
+                              labeltext: 'Address',
+                              ismandatory: true,
+                              controller: addresscController),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: TextInput(
+                                    hinttext: 'hason nagar',
+                                    labeltext: 'street',
+                                    ismandatory: true,
+                                    controller: streetController),
+                              ),
+                              const Gap(15),
+                              Expanded(
+                                child: TextInput(
+                                    hinttext: '34567',
+                                    labeltext: 'Post code',
+                                    ismandatory: true,
+                                    controller: postController),
+                              )
+                            ],
+                          ),
+                          TextInput(
+                              hinttext: '345',
+                              labeltext: 'Appartment',
+                              ismandatory: true,
+                              controller: appartmentController),
+                          Row(
+                            children: [
+                              Text(
+                                'Label as',
+                                style: getbodyStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xff31343d)),
+                              ),
+                            ],
+                          ),
+                          const Gap(10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              GestureDetector(
+                                  onTap: () => setState(() {
+                                        indextype = 0;
+                                      }),
+                                  child: TypeAddress(
+                                      isSelect: indextype == 0, name: 'Home')),
+                              GestureDetector(
+                                  onTap: () => setState(() {
+                                        indextype = 1;
+                                      }),
+                                  child: TypeAddress(
+                                      isSelect: indextype == 1, name: 'Work')),
+                              GestureDetector(
+                                  onTap: () => setState(() {
+                                        indextype = 2;
+                                      }),
+                                  child: TypeAddress(
+                                      isSelect: indextype == 2, name: 'Other')),
+                            ],
                           ),
                           const Gap(15),
-                          Expanded(
-                            child: TextInput(
-                                hinttext: '34567',
-                                labeltext: 'Post code',
-                                ismandatory: true,
-                                controller: postController),
-                          )
-                        ],
-                      ),
-                      TextInput(
-                          hinttext: '345',
-                          labeltext: 'Appartment',
-                          ismandatory: true,
-                          controller: appartmentController),
-                      Row(
-                        children: [
-                          Text(
-                            'Label as',
-                            style: getbodyStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff31343d)),
+                          Buton(
+                            text: 'Save location',
+                            ontap: () {
+                              if (formKey.currentState!.validate()) {
+                                context.read<ProfileCubit>().addaddress(
+                                    UserAddressc(
+                                        address: addresscController.text,
+                                        appartment: appartmentController.text,
+                                        labelas: indextype,
+                                        uuid: '',
+                                        postcode: postController.text,
+                                        street: streetController.text));
+                              }
+                            },
                           ),
                         ],
                       ),
-                      const Gap(10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          GestureDetector(
-                              onTap: () => setState(() {
-                                    indextype = 0;
-                                  }),
-                              child: TypeAddress(
-                                  isSelect: indextype == 0, name: 'Home')),
-                          GestureDetector(
-                              onTap: () => setState(() {
-                                    indextype = 1;
-                                  }),
-                              child: TypeAddress(
-                                  isSelect: indextype == 1, name: 'Work')),
-                          GestureDetector(
-                              onTap: () => setState(() {
-                                    indextype = 2;
-                                  }),
-                              child: TypeAddress(
-                                  isSelect: indextype == 2, name: 'Other')),
-                        ],
-                      ),
-                      const Gap(15),
-                      Buton(
-                        text: 'Save location',
-                        ontap: () {
-                          if (formKey.currentState!.validate()) {
-                            context.read<ProfileCubit>().addaddress(
-                                UserAddressc(
-                                    address: addresscController.text,
-                                    appartment: appartmentController.text,
-                                    labelas: indextype,
-                                    uuid: '',
-                                    postcode: postController.text,
-                                    street: streetController.text));
-                          }
-                        },
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          )),
+              )),
         ),
       );
     });

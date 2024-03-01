@@ -8,8 +8,10 @@ class ItemCatgory extends StatelessWidget {
   const ItemCatgory({
     super.key,
     required this.model,
+    required this.selectindex
   });
   final CategoriesModel model;
+  final bool selectindex;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +21,7 @@ class ItemCatgory extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(8, 8, 21, 8),
           height: 60,
           decoration: BoxDecoration(
-            color: model.selete ? AppColors.selectitem : AppColors.white,
+            color: selectindex ? AppColors.selectitem : AppColors.white,
             borderRadius: BorderRadius.circular(39),
             boxShadow: const [
               BoxShadow(
