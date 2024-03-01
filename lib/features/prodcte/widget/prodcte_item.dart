@@ -1,11 +1,12 @@
+import 'package:coody/core/models/prodcte_model.dart';
 import 'package:coody/core/utils/size_config.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ProdcteItemV extends StatefulWidget {
-  const ProdcteItemV({super.key});
-
+  const ProdcteItemV({super.key, required this.prodcte});
+  final Prodcte prodcte;
   @override
   State<ProdcteItemV> createState() => _ProdcteItemVState();
 }
@@ -17,7 +18,7 @@ class _ProdcteItemVState extends State<ProdcteItemV> {
       children: [
         SizedBox(
           width: SizeConfig.screenWidth,
-          height: 160,
+          height: 150,
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Column(
@@ -27,7 +28,7 @@ class _ProdcteItemVState extends State<ProdcteItemV> {
                 SizedBox(
                   width: 175,
                   child: Text(
-                    'Thyme Manoucheh ',
+                    widget.prodcte.fullname,
                     softWrap: true,
                     maxLines: 2,
                     style:
@@ -38,7 +39,7 @@ class _ProdcteItemVState extends State<ProdcteItemV> {
                 SizedBox(
                   width: 200,
                   child: Text(
-                    'A delicious piece of grilled halal beef without any additives or preservatives, with a little salt and pepper and topped with pickles, fresh onions, ketchup and mustard. You have nothing but the original.',
+                    widget.prodcte.description,
                     maxLines: 2,
                     softWrap: true,
                     overflow: TextOverflow.clip,
@@ -51,7 +52,7 @@ class _ProdcteItemVState extends State<ProdcteItemV> {
                 const Spacer(),
                 Row(
                   children: [
-                    Text('EG 150',
+                    Text('EG ${widget.prodcte.price}',
                         style: getbodyStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
@@ -79,11 +80,15 @@ class _ProdcteItemVState extends State<ProdcteItemV> {
               ],
             ),
             Container(
-              width: 130,
-              height: 150,
+              width: 120,
+              height: 130,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  // image: DecorationImage(image: NetworkImage()),
+                  image: DecorationImage(
+                      image: NetworkImage(
+                        widget.prodcte.urlimage,
+                      ),
+                      fit: BoxFit.fill),
                   color: const Color(0xffD0D9E1)),
             ),
           ]),

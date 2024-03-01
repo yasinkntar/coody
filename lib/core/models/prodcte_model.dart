@@ -106,15 +106,18 @@ class Prodcte {
   String fullname;
   int price;
   String urlimage;
-
+  String uid;
   Prodcte(
       {required this.catgory,
       required this.description,
       required this.fullname,
       required this.price,
+      required this.uid,
       required this.urlimage});
-  factory Prodcte.fromJson(QueryDocumentSnapshot<Map<String, dynamic>> json) {
+  factory Prodcte.fromJson(
+      QueryDocumentSnapshot<Map<String, dynamic>> json, String id) {
     return Prodcte(
+      uid: id,
       catgory: json['catgory'],
       fullname: json['fullname'],
       description: json['description'],

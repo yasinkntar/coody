@@ -35,7 +35,7 @@ class _ProdcteCompleteState extends State<ProdcteComplete> {
           List<Prodcte>? listprodcte = [];
 
           snapshot.data?.docs.forEach((element) {
-            listprodcte.add(Prodcte.fromJson(element));
+            listprodcte.add(Prodcte.fromJson(element,element.id));
           });
           return Column(
             children: [

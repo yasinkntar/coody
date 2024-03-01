@@ -1,7 +1,9 @@
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coody/core/models/categories_model.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/features/prodcte/widget/appbar.dart';
 import 'package:coody/features/prodcte/widget/prodcte_item.dart';
+import 'package:coody/features/prodcte/widget/prodctecategory.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -13,76 +15,54 @@ class ProdcteView extends StatefulWidget {
 }
 
 class _ProdcteViewState extends State<ProdcteView> {
- 
-  List<Widget> listcontrol = const [
-    ProdcteItemV(),
-    ProdcteItemV(),
-    ProdcteItemV(),
-    ProdcteItemV(),
-    ProdcteItemV(),
-  ];
+  // List<Map<String, Widget>> listprodcte = [
+  //   {"Trending": const ProdcteItemV()},
+  //   {"Trending": const ProdcteItemV()},
+  //   {"Trending": const ProdcteItemV()},
+  //   {"Trending": const ProdcteItemV()},
+  //   {"Trending": const ProdcteItemV()},
+  // ];
+  // List<Widget> listcontrol = const [
+  //   ProdcteItemV(),
+  //   ProdcteItemV(),
+  //   ProdcteItemV(),
+  //   ProdcteItemV(),
+  //   ProdcteItemV(),
+  // ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar:appBarTabeed(context,),
+      appBar: appBarTabeed(
+        context,
+      ),
       body: SafeArea(
           child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(color: Colors.white, boxShadow: [
-                BoxShadow(
-                  color: Color(0xffefe6e1),
-                  offset: Offset(0, 3),
-                  blurRadius: 2,
-                ),
-              ]),
-              child: Column(children: [
-                Row(
-                  children: [
-                    Text(
-                      'Trending',
-                      style: getTitleStyle(color: Colors.black, fontSize: 20),
-                    ),
-                  ],
-                ),
-                const Gap(20),
-                ...listcontrol.map((e) => const ProdcteItemV()).toList()
-              ]),
-            ),
-            Container(
-              height: 15,
-              width: double.infinity,
-              color: const Color(0xffD0D9E1),
-            ),
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(color: Colors.white, boxShadow: [
-                BoxShadow(
-                  color: Color(0xffefe6e1),
-                  offset: Offset(0, 3),
-                  blurRadius: 2,
-                ),
-              ]),
-              child: Column(children: [
-                Row(
-                  children: [
-                    Text(
-                      'Trending',
-                      style: getTitleStyle(color: Colors.black, fontSize: 20),
-                    ),
-                  ],
-                ),
-                const Gap(20),
-                ...listcontrol.map((e) => const ProdcteItemV()).toList()
-              ]),
-            )
-          ],
-        ),
-      )),
+              child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('categories')
+                      .where('visble', isEqualTo: true)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    if (snapshot.data!.docs.isEmpty) {
+                      return const Gap(10);
+                    }
+
+                    return Column(
+                      children: snapshot.data!.docs
+                          .map((e) => ProdcteOfCatgory(
+                                name: e["name"],
+                                uid: e.id,
+                              ))
+                          .toList(),
+                    );
+                  }))),
     );
   }
 }
