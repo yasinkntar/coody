@@ -1,9 +1,11 @@
 import 'package:coody/core/functions/routing.dart';
 import 'package:coody/features/drawer/menu_screen.dart';
 import 'package:coody/features/drawer/model/menu_item.dart';
+import 'package:coody/features/favorite/favorite_view.dart';
 import 'package:coody/features/history/hisotryorder_view.dart';
 import 'package:coody/features/home/screens/home_view.dart';
 import 'package:coody/features/prodcte/prodcte_view.dart';
+import 'package:coody/features/settings/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
@@ -52,13 +54,13 @@ class _DrawerScreenState extends State<DrawerScreen> {
       case MenuItems.explorymune:
         return const ProdcteView();
       case MenuItems.offers:
-        return const Center();
+        return const FavoriteView();
       case MenuItems.orderhistory:
         return const HistoryOrderView();
       case MenuItems.setting:
-        return const Center();
+        return const Settings();
       case MenuItems.trackorder:
-        return const Center();
+        return const HistoryOrderView();
       default:
         return const HomeView();
     }

@@ -107,7 +107,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 onPressed: () {
                                   pushTo(context, const ProfileView());
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.notifications,
                                   color: AppColors.white,
                                 ))

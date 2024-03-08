@@ -39,7 +39,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               const Gap(1),
               Text(
-                ' context.re>().location',
+                'Location Now',
                 style: TextStyle(
                     color: const Color(0xff676767),
                     fontSize: 14,

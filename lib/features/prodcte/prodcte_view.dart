@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coody/core/models/categories_model.dart';
-import 'package:coody/core/utils/style.dart';
 import 'package:coody/features/prodcte/widget/appbar.dart';
-import 'package:coody/features/prodcte/widget/prodcte_item.dart';
 import 'package:coody/features/prodcte/widget/prodctecategory.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

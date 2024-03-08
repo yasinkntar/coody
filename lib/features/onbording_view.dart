@@ -28,7 +28,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       onFinish: () {
         pushToWithReplacement(context, const LoginView());
       },
-      finishButtonStyle: FinishButtonStyle(
+      finishButtonStyle: const FinishButtonStyle(
         backgroundColor: AppColors.scaffoldBG,
       ),
       skipTextButton: const Text(

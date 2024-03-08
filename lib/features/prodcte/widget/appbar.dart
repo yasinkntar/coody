@@ -1,6 +1,5 @@
 import 'package:coody/core/models/categories_model.dart';
 import 'package:coody/core/utils/style.dart';
-import 'package:coody/core/widgets/custom_dialogs.dart';
 import 'package:coody/features/prodcte/widget/bottom_filter.dart';
 import 'package:coody/features/prodcte/widget/dilogfilter.dart';
 import 'package:coody/features/prodcte/widget/tabbar.dart';

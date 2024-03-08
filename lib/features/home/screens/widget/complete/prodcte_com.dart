@@ -6,6 +6,7 @@ import 'package:coody/core/utils/size_config.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/core/widgets/item_prodcte.dart';
 import 'package:coody/features/prodcte/prodcte_view.dart';
+import 'package:coody/features/prodcte_detile/prodcte_detiles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -33,7 +34,7 @@ class _ProdcteCompleteState extends State<ProdcteComplete> {
           List<Prodcte>? listprodcte = [];
 
           snapshot.data?.docs.forEach((element) {
-            listprodcte.add(Prodcte.fromJson(element,element.id));
+            listprodcte.add(Prodcte.fromJson(element, element.id));
           });
           return Column(
             children: [
@@ -72,8 +73,15 @@ class _ProdcteCompleteState extends State<ProdcteComplete> {
                   controller: ScrollController(keepScrollOffset: false),
                   shrinkWrap: true,
                   children: listprodcte
-                      .map((e) => Prodcteitem(
-                            prodcte: e,
+                      .map((e) => InkWell(
+                            onTap: () => pushTo(
+                                context,
+                                ProdcteDetiles(
+                                  uidpodcte: e.uid,
+                                )),
+                            child: Prodcteitem(
+                              prodcte: e,
+                            ),
                           ))
                       .toList(),
                 ),

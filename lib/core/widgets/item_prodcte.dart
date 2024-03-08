@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coody/core/models/prodcte_model.dart';
 import 'package:coody/core/utils/colors.dart';
-import 'package:coody/core/utils/size_config.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/core/widgets/favorite_widget.dart';
 import 'package:flutter/material.dart';
