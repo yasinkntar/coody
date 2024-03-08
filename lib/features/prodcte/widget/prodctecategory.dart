@@ -71,8 +71,6 @@ class _ProdcteOfCatgoryState extends State<ProdcteOfCatgory> {
                               ))
                           .toList());
                 }),
-
-            // ...listcontrol.map((e) => const ProdcteItemV()).toList()
           ]),
         ),
         Container(

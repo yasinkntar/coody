@@ -17,6 +17,15 @@ class PaymentModel {
       expiryDate: data["expiryDate"],
     );
   }
+  factory PaymentModel.fromJsona(Map<String, dynamic> data) {
+    print(data);
+    return PaymentModel(
+      cardHolderName: data["cardHolderName"],
+      cardNumber: data["cardNumber"],
+      cvv: data["cvv"],
+      expiryDate: data["expiryDate"],
+    );
+  }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['cardHolderName'] = cardHolderName;
@@ -25,5 +34,4 @@ class PaymentModel {
     data['expiryDate'] = expiryDate;
     return data;
   }
-
 }

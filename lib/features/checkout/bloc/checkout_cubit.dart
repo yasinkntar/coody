@@ -104,17 +104,21 @@ class CheckoutCubit extends Cubit<CheckoutStates> {
       for (var element in items!) {
         lisa.add(element.toFirestore());
       }
+      //  ("/Payment/${selectpayment!.id}")
       db.collection('Orders').add(
         {
           'userID': userID,
           'TypePayment': typePayment!.index,
-          'Payment': typePayment == TypePayment.visa ? selectpayment?.id : null,
+          'Payment': typePayment == TypePayment.visa
+              ? db.collection('Payment').doc(selectpayment?.id)
+              : null,
           'TypeReceiving': typeReceiving!.index,
           'Addressc': typeReceiving == TypeReceiving.delivery
-              ? selectaddressc?.id
+              ? db.collection('Addressc').doc(selectpayment?.id)
               : null,
           'DateOrderd': date,
           'status': 0,
+          'DeliveryID': null,
           'Tax': tataltax,
           'Discount': discout,
           'DelevieyServis': deilverservsie,

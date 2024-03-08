@@ -26,8 +26,8 @@ class AddreesContainer extends StatelessWidget {
             Container(
               width: 50,
               height: 50,
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: AppColors.white),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: AppColors.white),
               child: Image.asset(user.labelas == 0
                   ? 'assets/home.png'
                   : user.labelas == 1
@@ -40,28 +40,25 @@ class AddreesContainer extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              width: SizeConfig.screenWidth - 150,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    user.labelas == 0
-                        ? 'Home'
-                        : user.labelas == 1
-                            ? 'Work'
-                            : 'Other',
-                    style: getbodyStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
-                        color: AppColors.textbload),
-                  ),
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  user.labelas == 0
+                      ? 'Home'
+                      : user.labelas == 1
+                          ? 'Work'
+                          : 'Other',
+                  style: getbodyStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                      color: AppColors.textbload),
+                ),
+              ],
             ),
             const Gap(15),
             SizedBox(
-              width: 250,
+              width: SizeConfig.screenWidth - 150,
               child: Text(
                 user.address,
                 softWrap: true,

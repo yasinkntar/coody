@@ -4,8 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteProdcteWidget extends StatefulWidget {
-  const FavoriteProdcteWidget(
-      {super.key, required this.prodcteid});
+  const FavoriteProdcteWidget({super.key, required this.prodcteid});
   final String prodcteid;
   @override
   State<FavoriteProdcteWidget> createState() => _FavoriteProdcteWidgetState();
@@ -19,7 +18,7 @@ class _FavoriteProdcteWidgetState extends State<FavoriteProdcteWidget> {
         stream: FirebaseFirestore.instance
             .collection('Favorite')
             .where('ProdcteID', isEqualTo: widget.prodcteid)
-            .where('UserID', isEqualTo:  FirebaseAuth.instance.currentUser!.uid)
+            .where('UserID', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -40,8 +39,13 @@ class _FavoriteProdcteWidgetState extends State<FavoriteProdcteWidget> {
                     .doc(snapshot.data!.docs.first.id)
                     .delete();
               } else {
-                FirebaseFirestore.instance.collection('Favorite').doc().set(
-                    {"UserID": FirebaseAuth.instance.currentUser!.uid, "ProdcteID": widget.prodcteid});
+                FirebaseFirestore.instance.collection('Favorite').doc().set({
+                  "UserID": FirebaseAuth.instance.currentUser!.uid,
+                  "ProdcteID": widget.prodcteid,
+                  "Prodcte": FirebaseFirestore.instance
+                      .collection('Prodcte')
+                      .doc(widget.prodcteid)
+                });
               }
             },
             child: Container(

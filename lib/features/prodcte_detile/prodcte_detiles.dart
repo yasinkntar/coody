@@ -93,7 +93,6 @@ class _ProdcteDetilesState extends State<ProdcteDetiles> {
                                   alignment: Alignment.topRight,
                                   child: AppBarProdcteDetiles(
                                     prodcteid: prodcteData.id,
-       
                                   )))),
                       Padding(
                         padding: const EdgeInsets.all(20),
@@ -113,7 +112,7 @@ class _ProdcteDetilesState extends State<ProdcteDetiles> {
                             ),
                             const Gap(10),
                             Text(
-                              prodcteData['catgory'],
+                              prodcteData['catgorynam'],
                               style: getbodyStyle(color: AppColors.textnorlma),
                             ),
                             const Gap(15),

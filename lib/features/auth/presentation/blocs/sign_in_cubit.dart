@@ -44,7 +44,7 @@ class AuthCubit extends Cubit<AuthStates> {
       FirebaseFirestore.instance.collection('Users').doc(user.uid).set({
         'name': name,
         'image': null,
-        'dateofbrite': null,
+        'bio': null,
         'email': email,
         'phone': null,
         'Addressc': null,

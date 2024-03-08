@@ -6,10 +6,8 @@ import 'package:coody/core/utils/size_config.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/core/widgets/item_prodcte.dart';
 import 'package:coody/features/prodcte/prodcte_view.dart';
-import 'package:coody/features/prodcte_detile/prodcte_detiles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:shaky_animated_listview/animators/grid_animator.dart';
 
 class ProdcteComplete extends StatefulWidget {
   const ProdcteComplete({super.key});
