@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coody/core/models/prodcte_model.dart';
 import 'package:coody/core/utils/size_config.dart';
 import 'package:coody/core/utils/style.dart';
 import 'package:coody/core/widgets/appbars.dart';
 import 'package:coody/core/widgets/item_prodcte.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shaky_animated_listview/animators/grid_animator.dart';
 
 class FavoriteView extends StatefulWidget {
   const FavoriteView({super.key});
